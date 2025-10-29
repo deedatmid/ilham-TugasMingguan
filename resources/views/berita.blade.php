@@ -2,13 +2,13 @@
 
 @section('content')
 <h1>berita</h1>
-@foreach ( $berita as $berita )
+@foreach ( $berita as $item )
 <article class="mb-5">
-    <a href="/berita/{{ $berita['slug'] }}"> 
-    <h2> {{ $berita['judul'] }} </h2>
+    <a href="/berita/{{ $item['slug'] }}"> 
+    <h2> {{ $item['judul'] }} </h2>
     </a>
-    <h3>{{ $berita['penulis'] }}</h3>
-    <p>{{ $berita['konten'] }}</p>
+    <h3>{{ $item['penulis'] }}</h3>
+    <p>{{ $item['konten'] }}</p>
     </article>
 
 @endforeach

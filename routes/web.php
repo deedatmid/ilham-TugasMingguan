@@ -1,5 +1,9 @@
 <?php
 
+
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\BeritaController;
+use App\Models\Berita;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,7 +27,7 @@ Route::get('/berita', function () {
         [
             "judul" => "Unimus musang",
             "slug" => "unimus-musang",
-            "penulis" => "Ainur Rofik",
+            "penulis" => "Chelsea Dieva",
             "konten" => "Bundir dikarenakan kebanyakan minum americano",
         ],
         [
@@ -48,23 +52,23 @@ Route::get('/berita', function () {
 Route::get('/berita/{slug}', function ($slugp) {
 
     $data_berita = [
-        [
-            "judul" => "Unimus Ganteng",
-            "slug" => "unimus-ganteng",
-            "penulis" => "anjo",
-            "konten" => "pembunuhan tanpa busana daerah ciliwangi",
+ [
+            "judul" => "Unimus musang",
+            "slug" => "unimus-musang",
+            "penulis" => "Chelsea Dieva",
+            "konten" => "Bundir dikarenakan kebanyakan minum americano",
         ],
         [
-            "judul" => "Berita Unimus Hot",
+            "judul" => "Unimus nyambik",
             "slug"=> "berita-unimus-hot",
-            "penulis" => "jamno",
-            "konten" => "menangis meratapi nasib, seorang pemuda ditemukan sedang melahirkan disekitar lampu merah ciliwung",
+            "penulis" => "Supriyanto",
+            "konten" => "Meninggal akibat tergigit semut",
         ],
         [
-            "judul" => "Fatur Full Percakapan",
+            "judul" => "Busay Full Percakapan 5 Menit",
             "slug" => "fatur-full-percakapan",
-            "penulis" => "pukime",
-            "konten" => "munaroh menikami",
+            "penulis" => "Dudung",
+            "konten" => "Busay di selingkuhi oleh teman sendiri",
         ],
     ];
     $new_berita = [];
@@ -79,9 +83,9 @@ Route::get('/berita/{slug}', function ($slugp) {
     }
 
 
-    return view('singgleberita', [
+    return view('singleberita', [
         "title" => "Berita",
-        "new_berita" => $new_berita,
+        "berita" => $new_berita,
     ]);
 });
 
