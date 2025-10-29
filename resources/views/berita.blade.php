@@ -1,16 +1,38 @@
 @extends('layouts.main')
 
 @section('content')
-<h1>berita</h1>
-@foreach ( $berita as $item )
-<article class="mb-5">
-    <a href="/berita/{{ $item['slug'] }}"> 
-    <h2> {{ $item['judul'] }} </h2>
-    </a>
-    <h3>{{ $item['penulis'] }}</h3>
-    <p>{{ $item['konten'] }}</p>
-    </article>
+<div class="row mb-4">
+    <div class="col">
+        <h1 class="display-4 fw-bold text-primary mb-4"><i class="fas fa-newspaper me-3"></i>Berita Terkini</h1>
+    </div>
+</div>
 
-@endforeach
-
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @foreach ($berita as $item)
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <!-- Placeholder image - Anda bisa ganti dengan gambar berita asli jika ada -->
+            <div class="card-img-top bg-light text-center py-4">
+                <i class="fas fa-newspaper text-primary" style="font-size: 4rem;"></i>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="/berita/{{ $item['slug'] }}" class="text-decoration-none text-dark">
+                        {{ $item['judul'] }}
+                    </a>
+                </h5>
+                <p class="card-text text-muted mb-2">
+                    <small><i class="fas fa-user me-2"></i>{{ $item['penulis'] }}</small>
+                </p>
+                <p class="card-text">{{ Str::limit($item['konten'], 100) }}</p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <a href="/berita/{{ $item['slug'] }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-arrow-right me-1"></i> Baca Selengkapnya
+                </a>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
 @endsection

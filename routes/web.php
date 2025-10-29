@@ -17,7 +17,7 @@ Route::get('/profile', function () {
         "title" => "profile",
         "nama" => "Ilham Deedat Al-Ayyubi",
         "nohp" => "0882003309574",
-        "foto" => "images/deedat.jpg",
+        "foto" => "img/deedat.jpg",
     ]);
 });
 
@@ -25,10 +25,10 @@ Route::get('/berita', function () {
 
     $data_berita = [
         [
-            "judul" => "Unimus musang",
+            "judul" => "Mahasiswa yang depresi",
             "slug" => "unimus-musang",
             "penulis" => "Chelsea Dieva",
-            "konten" => "Bundir dikarenakan kebanyakan minum americano",
+            "konten" => "Bundir dikarenakan uts yang menyerang diri nya",
         ],
         [
             "judul" => "Unimus nyambik",
@@ -52,11 +52,11 @@ Route::get('/berita', function () {
 Route::get('/berita/{slug}', function ($slugp) {
 
     $data_berita = [
- [
-            "judul" => "Unimus musang",
+        [
+            "judul" => "Mahasiswa yang depresi",
             "slug" => "unimus-musang",
             "penulis" => "Chelsea Dieva",
-            "konten" => "Bundir dikarenakan kebanyakan minum americano",
+            "konten" => "Bundir dikarenakan uts yang menyerang diri nya",
         ],
         [
             "judul" => "Unimus nyambik",
