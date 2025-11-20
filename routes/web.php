@@ -1,8 +1,7 @@
 <?php
 
-
 use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\BeritaController;  
+use App\Http\Controllers\BeritaController;
 use App\Models\Berita;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +10,7 @@ Route::get('/', function () {
         "title" => "home",
     ]);
 });
+
 
 Route::get('/profile', function () {
     return view('profile',[
@@ -21,73 +21,19 @@ Route::get('/profile', function () {
     ]);
 });
 
-Route::get('/berita', function () {
 
-    $data_berita = [
-        [
-            "judul" => "Mahasiswa yang depresi",
-            "slug" => "unimus-musang",
-            "penulis" => "Chelsea Dieva",
-            "konten" => "Bundir dikarenakan uts yang menyerang diri nya",
-        ],
-        [
-            "judul" => "Unimus nyambik",
-            "slug"=> "berita-unimus-hot",
-            "penulis" => "Supriyanto",
-            "konten" => "Meninggal akibat tergigit semut",
-        ],
-        [
-            "judul" => "Busay Full Percakapan 5 Menit",
-            "slug" => "fatur-full-percakapan",
-            "penulis" => "Dudung",
-            "konten" => "Busay di selingkuhi oleh teman sendiri",
-        ],
-    ];
-    return view('berita', [
-        "title" => "berita",
-        "berita" => $data_berita,
-    ]);
-});
+Route::get('/berita',[BeritaController::class, 'index']);
+Route::get('/berita/{slug}', [BeritaController::class, 'tampildata']);
 
-Route::get('/berita/{slug}', function ($slugp) {
+Route::get('/mahasiswa',[MahasiswaController::class, 'index'])->name('mahasiswa');
 
-    $data_berita = [
-        [
-            "judul" => "Mahasiswa yang depresi",
-            "slug" => "unimus-musang",
-            "penulis" => "Chelsea Dieva",
-            "konten" => "Bundir dikarenakan uts yang menyerang diri nya",
-        ],
-        [
-            "judul" => "Unimus nyambik",
-            "slug"=> "berita-unimus-hot",
-            "penulis" => "Supriyanto",
-            "konten" => "Meninggal akibat tergigit semut",
-        ],
-        [
-            "judul" => "Busay Full Percakapan 5 Menit",
-            "slug" => "fatur-full-percakapan",
-            "penulis" => "Dudung",
-            "konten" => "Busay di selingkuhi oleh teman sendiri",
-        ],
-    ];
-    $new_berita = [];
-    
-    foreach ($data_berita as $berita)
- {
-
-        if($berita["slug"] === $slugp)
-             {
-            $new_berita = $berita; ///$berita =>[judul, slug, penulis, konten]
-            }
-    }
+Route::get('/tambahmahasiswa',[MahasiswaController::class, 'tambahmahasiswa'])->name('tambahmahasiswa');
+Route::POST('/insertdata',[MahasiswaController::class, 'insertdata'])->name('insertdata');
 
 
-    return view('singleberita', [
-        "title" => "Berita",
-        "berita" => $new_berita,
-    ]);
-});
+Route::get('/tampildata/{id}',[MahasiswaController::class, 'tampildata'])->name('tampildata');
+
+Route::POST('/editdata/{id}',[MahasiswaController::class, 'editdata'])->name('editdata');
 
 Route::get('/contact', function () {
     return view('contact', [
