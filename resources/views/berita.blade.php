@@ -17,17 +17,17 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="/berita/{{ $item['slug'] }}" class="text-decoration-none text-dark">
-                        {{ $item['judul'] }}
+                    <a href="/berita/{{ data_get($item, 'slug', '') }}" class="text-decoration-none text-dark">
+                        {{ data_get($item, 'judul', 'Untitled') }}
                     </a>
                 </h5>
                 <p class="card-text text-muted mb-2">
-                    <small><i class="fas fa-user me-2"></i>{{ $item['penulis'] }}</small>
+                    <small><i class="fas fa-user me-2"></i>{{ data_get($item, 'penulis', 'Penulis') }}</small>
                 </p>
-                <p class="card-text">{{ Str::limit($item['konten'], 100) }}</p>
+                <p class="card-text">{{ Str::limit(data_get($item, 'konten', ''), 100) }}</p>
             </div>
             <div class="card-footer bg-transparent border-top-0">
-                <a href="/berita/{{ $item['slug'] }}" class="btn btn-primary btn-sm">
+                <a href="/berita/{{ data_get($item, 'slug', '') }}" class="btn btn-primary btn-sm">
                     <i class="fas fa-arrow-right me-1"></i> Baca Selengkapnya
                 </a>
             </div>

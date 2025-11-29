@@ -14,9 +14,15 @@ class BeritaController extends Controller
     ]);
 }
     public function tampildata($slug) {
+    $artikel = Berita::caridata($slug);
+
+    if (!$artikel) {
+        abort(404);
+    }
+
     return view('singleberita', [
-        "title" => "Berita",
-        "new_berita" => Berita::caridata($slug),
+        "title" => $artikel['judul'] ?? 'Berita',
+        "berita" => $artikel,
     ]);
 }
 }

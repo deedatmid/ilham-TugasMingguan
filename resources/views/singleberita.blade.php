@@ -8,17 +8,17 @@
         <nav aria-label="breadcrumb" class="mb-4">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/berita" class="text-decoration-none"><i class="fas fa-newspaper me-1"></i>Berita</a></li>
-                    <li class="breadcrumb-item active">{{ $berita["judul"] }}</li>
+                    <li class="breadcrumb-item active">{{ data_get($berita, 'judul', 'Berita') }}</li>
             </ol>
         </nav>
 
         <article class="bg-white p-4 rounded shadow-sm">
-            <h1 class="display-5 fw-bold mb-4">{{ $berita["judul"] }}</h1>
+            <h1 class="display-5 fw-bold mb-4">{{ data_get($berita, 'judul', 'Berita') }}</h1>
             
             <div class="d-flex align-items-center mb-4">
                 <i class="fas fa-user-circle text-primary me-2" style="font-size: 2rem;"></i>
                 <div>
-                    <h6 class="mb-0">{{ $berita["penulis"] }}</h6>
+                    <h6 class="mb-0">{{ data_get($berita, 'penulis', 'Penulis tidak diketahui') }}</h6>
                     <small class="text-muted">
                         <i class="fas fa-clock me-1"></i>
                         {{ date('d M Y') }}
@@ -27,7 +27,7 @@
             </div>
 
             <div class="content-body">
-                <p class="lead mb-4">{{ $berita["konten"] }}</p>
+                <p class="lead mb-4">{{ data_get($berita, 'konten', '') }}</p>
             </div>
 
             <hr class="my-4">

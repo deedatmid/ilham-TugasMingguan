@@ -12,37 +12,32 @@ class MahasiswaController extends Controller
 
         $data = Mahasiswa::all();
 
-       
-        return view('Mahasiswa', compact('data'),[
-            "title" => "Data Mahasiswa",
-            
+        return view('mahasiswa', [
+            'data' => $data,
+            'title' => 'Data Mahasiswa',
         ]);
     }
-
     public function tambahmahasiswa()
     {
         return view('tambahmahasiswa',[
-            "title" => "Tambah Mahasiswa",
+            "title" => "Tambah Data Mahasiswa",
         ]);
     }
 
     public function insertdata(Request $request)
     {
+        Mahasiswa::create($request->only(['nama','nim','prodi','email','nohp']));
 
-        /// insert data ke database
-        $data = Mahasiswa::create($request->all());
-
-        return redirect()->route('mahasiswa')->with('success', 'Data Berhasil Ditambahkan!');
-
+        return redirect()->route('mahasiswa')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
     public function tampildata($id)
     {
         $data = Mahasiswa::find($id);
 
-        return view("edit", [
-            "title" => "Edit Mahasiswa",
-            "data" => $data,
+        return view('edit', [
+            'title' => 'Edit Mahasiswa',
+            'data' => $data,
         ]);
     }
 
@@ -50,8 +45,18 @@ class MahasiswaController extends Controller
     {
         $data = Mahasiswa::find($id);
 
-        $data->update($request->all());
+        $data->update($request->only(['nama','nim','prodi','email','nohp']));
 
         return redirect()->route('mahasiswa')->with('success', 'Data Berhasil Di Edit!');
     }
+
+    public function deletedata($id)
+    {
+        $data = Mahasiswa::find($id);
+
+        $data->delete();
+
+        return redirect()->route('mahasiswa')->with('success', 'Data Berhasil Di Hapus!');
+    }
+
 }
