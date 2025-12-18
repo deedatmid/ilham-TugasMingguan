@@ -26,7 +26,13 @@ class MahasiswaController extends Controller
 
     public function insertdata(Request $request)
     {
-        Mahasiswa::create($request->only(['nama','nim','prodi','email','nohp']));
+        $data = new Mahasiswa();
+        $data->nama = $request->nama;
+        $data->nim = $request->nim;
+        $data->prodi = $request->prodi;
+        $data->email = $request->email;
+        $data->nohp = $request->nohp;
+        $data->save();
 
         return redirect()->route('mahasiswa')->with('success', 'Data Berhasil Di Tambahkan');
     }
