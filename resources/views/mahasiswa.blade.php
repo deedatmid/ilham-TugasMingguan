@@ -48,7 +48,7 @@
         <td>
             <a href="tampildata/{{ $mahasiswa['id'] }}" 
             class="btn btn-primary">EDIT</a>
-            <a href="a" class="btn btn-danger delete"
+            <a href="/deletedata/{{ $mahasiswa['id'] }}" class="btn btn-danger delete"
              data-id="{{ $mahasiswa['id'] }}" data-nama="{{
               $mahasiswa['nama'] }}">HAPUS</a>
         </td>
@@ -66,9 +66,11 @@
 
 <script>
 
-$('.delete').click( function(){
+$('.delete').click( function(e){
+  e.preventDefault();
          
   let id = $(this).attr('data-id');
+  let nama = $(this).attr('data-nama');
   
   Swal.fire({
   title:"Tenane Gok?"
@@ -80,7 +82,7 @@ $('.delete').click( function(){
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-    window.location = "/deletedata/"+id+;
+    window.location = "/deletedata/"+id;
   }
 });
 });
