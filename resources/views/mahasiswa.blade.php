@@ -66,25 +66,27 @@
 
 <script>
 
-$('.delete').click( function(e){
-  e.preventDefault();
-         
-  let id = $(this).attr('data-id');
-  let nama = $(this).attr('data-nama');
-  
-  Swal.fire({
-  title:"Tenane Gok?"
-  text: "Data " + nama + " bakal dihapus, Yakin?",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-}).then((result) => {
-  if (result.isConfirmed) {
-    window.location = "/deletedata/"+id;
-  }
-});
+$(document).ready(function() {
+  $('.delete').click( function(e){
+    e.preventDefault();
+           
+    let id = $(this).attr('data-id');
+    let nama = $(this).attr('data-nama');
+    
+    Swal.fire({
+    title:"Tenane Gok?"
+    text: "Data " + nama + " bakal dihapus, Yakin?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location = "/deletedata/"+id;
+    }
+  });
+  });
 });
 
  </script>
