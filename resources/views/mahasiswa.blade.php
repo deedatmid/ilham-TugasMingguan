@@ -69,12 +69,16 @@
 $(document).ready(function() {
   $('.delete').click( function(e){
     e.preventDefault();
+    
+    alert('Delete clicked'); // Debug: check if click works
            
     let id = $(this).attr('data-id');
     let nama = $(this).attr('data-nama');
     
+    alert('ID: ' + id + ', Nama: ' + nama); // Debug: check data
+    
     Swal.fire({
-    title:"Tenane Gok?"
+    title:"Tenane Gok?",
     text: "Data " + nama + " bakal dihapus, Yakin?",
     icon: "warning",
     showCancelButton: true,
