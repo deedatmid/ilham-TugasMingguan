@@ -100,7 +100,7 @@
                     <div class="timeline">
                         <div class="timeline-item mb-4">
                             <h6 class="fw-bold">Universitas Muhammadiyah Semarang</h6>
-                            <p class="text-muted mb-2"><i class="fas fa-calendar-alt me-2"></i>2021 - Present</p>
+                            <p class="text-muted mb-2"><i class="fas fa-calendar-alt me-2"></i>2024 - Sekarang</p>
                             <p>Teknologi Informasi</p>
                         </div>
                     </div>

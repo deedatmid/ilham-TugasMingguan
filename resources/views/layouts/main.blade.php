@@ -48,6 +48,37 @@
                         <a class="nav-link {{ Request::is('contact*') ? 'active' : '' }}" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a>
                     </li>
                 </ul>
+
+                {{-- Auth-aware actions --}}
+                <ul class="navbar-nav ms-2">
+                    @guest
+                        <li class="nav-item d-flex align-items-center">
+                            <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-sign-in-alt me-1"></i>Login</a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <a class="nav-link" href="{{ route('register') }}"><i class="fas fa-user-plus me-1"></i>Daftar</a>
+                        </li>
+                    @endguest
+
+                    @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i>{{ auth()->user()->name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="{{ route('mahasiswa') }}"><i class="fas fa-graduation-cap me-1"></i>Mahasiswa</a></li>
+                                <li><a class="dropdown-item" href="{{ route('users.index') }}"><i class="fas fa-users me-1"></i>Akun</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}" class="px-3">
+                                        @csrf
+                                        <button type="submit" class="btn btn-link dropdown-item">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endauth
+                </ul>
             </div>
         </div>
     </nav>

@@ -1,0 +1,40 @@
+/* Custom styles for login page and users list */
+.login-page {
+  min-height: calc(100vh - 120px);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.login-page .card {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 0;
+}
+
+.login-page .card-header {
+  background: linear-gradient(90deg, #4f46e5, #06b6d4);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.login-page .btn-primary {
+  background: #4f46e5;
+  border-color: #4f46e5;
+}
+
+#recent-accounts .list-group-item {
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+#recent-accounts .list-group-item:hover {
+  background: #f8fafc;
+}
+
+.text-truncate { max-width: 100%; }
+
+/* Responsive tweaks */
+@media (min-width: 768px) {
+  .login-page .col-md-6 { max-width: 480px; }
+}
